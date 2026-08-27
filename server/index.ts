@@ -16,7 +16,7 @@ async function startServer() {
       ? path.resolve(__dirname, "public")
       : path.resolve(__dirname, "..", "dist", "public");
 
-  const assetsPath = path.resolve(__dirname, "..", "..", "programando-futuros-assets");
+  const assetsPath = path.resolve(__dirname, "..", "programando-futuros-assets");
 
   app.use(express.static(staticPath));
   app.use("/programando-futuros-assets", express.static(assetsPath));
