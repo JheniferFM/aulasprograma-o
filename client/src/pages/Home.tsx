@@ -5,7 +5,7 @@
 import { ArrowUpRight, Check, Clock3, Code2, Heart, Lightbulb, Menu, MessageCircle, Sparkles, Users, X } from "lucide-react";
 import { useState } from "react";
 
-const WHATSAPP = "https://wa.me/5561991987275";
+const WHATSAPP = "https://wa.me/5561991987725";
 const IMAGE_BASE = "/programando-futuros-assets/images";
 const whatsappMessage = (context = "Oi, Jhenifer! Vi o site do Programando Futuros e quero saber mais sobre as aulas ao vivo.") => `${WHATSAPP}?text=${encodeURIComponent(context)}`;
 
