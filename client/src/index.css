@@ -26,12 +26,12 @@
 
 /* Subjects UI adjustments: keep the pink arrow at the side, show black bullet descriptions below */
 .subject-list { border-top: 1px solid #cbd8ef; }
-.subject-item { color: #2457d6; border-bottom: 1px solid #cbd8ef; align-items: center; gap: 18px; min-height: 77px; transition: padding .16s ease; }
-.subject-button { display: flex; align-items: center; gap: 12px; background: transparent; border: 0; width: 100%; padding: 18px 0; text-align: left; cursor: pointer; color: inherit; }
+.subject-item { color: #2457d6; border-bottom: 1px solid #cbd8ef; gap: 18px; min-height: 77px; transition: padding .16s ease; display: block; }
+.subject-button { display: flex; align-items: center; gap: 12px; background: transparent; border: 0; width: 100%; padding: 18px 0 8px 0; text-align: left; cursor: pointer; color: inherit; }
 .subject-number { font-weight: 900; color: #2457d6; min-width: 36px; }
 .subject-button strong { font-size: 16px; color: #18203c; margin-left: 6px; }
 .subject-arrow { margin-left: auto; color: #f47c9b; transition: transform .18s ease; }
 .subject-button[aria-expanded="true"] .subject-arrow { transform: rotate(45deg); }
 .subject-desc { color: #000; margin: 6px 0 18px 56px; }
-.subject-desc ul { margin: 0; padding-left: 18px; }
+.subject-desc ul { margin: 6px 0 0 0; padding-left: 18px; list-style: disc; list-style-position: outside; }
 .subject-desc li { margin-bottom: 8px; color: #000; font-size: 15px; line-height: 1.6; }
