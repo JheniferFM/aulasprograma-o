@@ -2,7 +2,7 @@
  * Direção visual: Caderno de Ideias — editorial escolar contemporâneo, pessoal e luminoso.
  * Este arquivo usa composição assimétrica, azul Ideia #2457D6, rosa coral e microinterações curtas.
  */
-import { ArrowUpRight, Check, Clock3, Code2, Heart, Lightbulb, Menu, MessageCircle, Sparkles, Users, X } from "lucide-react";
+import { ArrowUpRight, Check, Clock3, Code2, Heart, Lightbulb, Menu, MessageCircle, Sparkles, Users, X, Instagram } from "lucide-react";
 import { useState } from "react";
 
 const WHATSAPP = "https://wa.me/5561991987275";
@@ -146,7 +146,14 @@ export default function Home() {
 
       <section className="final-cta"><div className="cta-decoration">✦</div><span className="section-kicker">uma conversa é o primeiro passo</span><h2>Vamos encontrar a turma<br /><em>certa para você?</em></h2><p>Aulas ao vivo para alunos de todo o Brasil, com orientação próxima e preço acessível. Me chama no WhatsApp para conhecer horários e próximos grupos.</p><a className="button button-light" href={whatsappMessage("Oi, Jhenifer! Quero saber sobre horários e próximos grupos.")} target="_blank" rel="noreferrer"><MessageCircle size={19} /> Chamar no WhatsApp</a><small>Não há aula experimental. A conversa inicial é para tirar dúvidas com tranquilidade.</small></section>
 
-      <footer className="site-footer"><a href="#inicio" className="brand footer-brand"><img className="rocket-logo" src={`${IMAGE_BASE}/foguete-logo.png`} alt="" /><span className="brand-wordmark"><strong>programando</strong><em>futuros</em></span></a><span>por Jhenifer Meneses</span><span>© 2026</span></footer>
+      <footer className="site-footer">
+        <a href="#inicio" className="brand footer-brand"><img className="rocket-logo" src={`${IMAGE_BASE}/foguete-logo.png`} alt="" /><span className="brand-wordmark"><strong>programando</strong><em>futuros</em></span></a>
+        <span>por Jhenifer Meneses</span>
+        <a href="https://www.instagram.com/programandofuturosaulas/" target="_blank" rel="noreferrer" className="footer-instagram" aria-label="Instagram programando futuros">
+          <Instagram size={16} /> @programandofuturosaulas
+        </a>
+        <span>© 2026</span>
+      </footer>
       <a className="floating-whatsapp" href={whatsappMessage()} target="_blank" rel="noreferrer" aria-label="Falar com Jhenifer pelo WhatsApp"><MessageCircle size={24} /></a>
     </main>
   );
