@@ -5,7 +5,7 @@
 import { ArrowUpRight, Check, Clock3, Code2, Heart, Lightbulb, Menu, MessageCircle, Sparkles, Users, X } from "lucide-react";
 import { useState } from "react";
 
-const WHATSAPP = "https://wa.me/5561991987725";
+const WHATSAPP = "https://wa.me/5561991987275";
 const IMAGE_BASE = "/programando-futuros-assets/images";
 const whatsappMessage = (context = "Oi, Jhenifer! Vi o site do Programando Futuros e quero saber mais sobre as aulas ao vivo.") => `${WHATSAPP}?text=${encodeURIComponent(context)}`;
 
@@ -16,10 +16,10 @@ const levels = [
 ];
 
 const subjects = [
-  { icon: Code2, label: "Aplicativos e sites", description: "Criação de apps e sites responsivos: HTML, CSS, JavaScript e práticas de UX para transformar ideias em produtos utilizáveis." },
-  { icon: Sparkles, label: "Jogos e experiências digitais", description: "Desenvolvimento de jogos e experiências interativas com lógica, física básica e design de interação para engajar usuários." },
-  { icon: Lightbulb, label: "IA aplicada e lógica", description: "Conceitos de lógica, modelos simples de IA e regras para aplicar inteligência artificial em projetos práticos." },
-  { icon: Heart, label: "Startups e empreendedorismo", description: "Noções de produto, validação de ideias, Pitch e como transformar um projeto em um pequeno negócio ou serviço." },
+  { icon: Code2, label: "Aplicativos e sites", description: "Criação de sites e aplicações responsivas: formulários, dashboards e experiências web que resolvem problemas reais." },
+  { icon: Sparkles, label: "Jogos e experiências digitais", description: "Desenvolvimento de jogos e experiências interativas para aprender programação brincando e testar interfaces criativas." },
+  { icon: Lightbulb, label: "IA aplicada e lógica", description: "Introdução prática à lógica e a usos de IA: automações simples, classificação e integração em projetos reais." },
+  { icon: Heart, label: "Startups e empreendedorismo", description: "Como transformar ideias em produtos: MVPs, validação, modelos de negócio e prototipagem rápida." },
 ];
 
 function scrollTo(id: string) {
@@ -28,7 +28,7 @@ function scrollTo(id: string) {
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSubject, setActiveSubject] = useState<number | null>(null);
+  const [activeSubject, setActiveSubject] = useState<string | null>(null);
   return (
     <main className="site-shell">
       <div className="top-note"><span>Programando Futuros</span><span>aulas ao vivo • todo o Brasil • preço acessível</span></div>
@@ -73,14 +73,21 @@ export default function Home() {
         <div className="section-intro"><span className="section-kicker">o que você pode criar</span><h2>Mais do que código: ideias que ganham <span>forma.</span></h2><div className="margin-note">não é sobre decorar.<br /><strong>é sobre entender.</strong></div></div>
         <div className="subject-list">
           {subjects.map(({ icon: Icon, label, description }, i) => (
-            <div className={`subject-item ${activeSubject === i ? "is-open" : ""}`} key={label} role="button" tabIndex={0} onClick={() => setActiveSubject(activeSubject === i ? null : i)} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setActiveSubject(activeSubject === i ? null : i); }}>
-              <div className="subject-head">
+            <div className="subject-item" key={label}>
+              <button
+                type="button"
+                className="subject-button"
+                onClick={() => setActiveSubject(activeSubject === label ? null : label)}
+                aria-expanded={activeSubject === label}
+              >
                 <span className="subject-number">0{i + 1}</span>
                 <Icon size={23} strokeWidth={1.8} />
                 <strong>{label}</strong>
                 <ArrowUpRight size={16} className="subject-arrow" />
-              </div>
-              {activeSubject === i && <div className="subject-description">{description}</div>}
+              </button>
+              {activeSubject === label && (
+                <p className="subject-desc">{description}</p>
+              )}
             </div>
           ))}
         </div>
