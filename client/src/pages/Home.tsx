@@ -16,10 +16,42 @@ const levels = [
 ];
 
 const subjects = [
-  { icon: Code2, label: "Aplicativos e sites", description: "Criação de sites e aplicações responsivas: formulários, dashboards e experiências web que resolvem problemas reais." },
-  { icon: Sparkles, label: "Jogos e experiências digitais", description: "Desenvolvimento de jogos e experiências interativas para aprender programação brincando e testar interfaces criativas." },
-  { icon: Lightbulb, label: "IA aplicada e lógica", description: "Introdução prática à lógica e a usos de IA: automações simples, classificação e integração em projetos reais." },
-  { icon: Heart, label: "Startups e empreendedorismo", description: "Como transformar ideias em produtos: MVPs, validação, modelos de negócio e prototipagem rápida." },
+  {
+    icon: Code2,
+    label: "Aplicativos e sites",
+    description: [
+      "Criar interfaces responsivas para web e mobile.",
+      "Formulários, autenticação e integração com APIs.",
+      "Dashboards e pequenos produtos que resolvem problemas reais.",
+    ],
+  },
+  {
+    icon: Sparkles,
+    label: "Jogos e experiências digitais",
+    description: [
+      "Conceitos de gameplay e lógica de interação.",
+      "Protótipos jogáveis para aprender programando brincando.",
+      "Testes simples de usabilidade e iteração rápida.",
+    ],
+  },
+  {
+    icon: Lightbulb,
+    label: "IA aplicada e lógica",
+    description: [
+      "Lógica e raciocínio algorítmico para resolver problemas.",
+      "Introdução prática a automações e modelos simples de IA.",
+      "Como integrar pequenas automações em projetos reais.",
+    ],
+  },
+  {
+    icon: Heart,
+    label: "Startups e empreendedorismo",
+    description: [
+      "Transformar ideias em MVPs e protótipos rápidos.",
+      "Validação simples com usuários e primeiros passos de negócio.",
+      "Noções práticas de lançamento e testes de hipótese.",
+    ],
+  },
 ];
 
 function scrollTo(id: string) {
@@ -86,7 +118,13 @@ export default function Home() {
                 <ArrowUpRight size={16} className="subject-arrow" />
               </button>
               {activeSubject === label && (
-                <p className="subject-desc">{description}</p>
+                <div className="subject-desc">
+                  <ul>
+                    {description.map((line, idx) => (
+                      <li key={idx}>{line}</li>
+                    ))}
+                  </ul>
+                </div>
               )}
             </div>
           ))}
