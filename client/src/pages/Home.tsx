@@ -16,10 +16,10 @@ const levels = [
 ];
 
 const subjects = [
-  { icon: Code2, label: "Aplicativos e sites" },
-  { icon: Sparkles, label: "Jogos e experiências digitais" },
-  { icon: Lightbulb, label: "IA aplicada e lógica" },
-  { icon: Heart, label: "Startups e empreendedorismo" },
+  { icon: Code2, label: "Aplicativos e sites", description: "Criação de apps e sites responsivos: HTML, CSS, JavaScript e práticas de UX para transformar ideias em produtos utilizáveis." },
+  { icon: Sparkles, label: "Jogos e experiências digitais", description: "Desenvolvimento de jogos e experiências interativas com lógica, física básica e design de interação para engajar usuários." },
+  { icon: Lightbulb, label: "IA aplicada e lógica", description: "Conceitos de lógica, modelos simples de IA e regras para aplicar inteligência artificial em projetos práticos." },
+  { icon: Heart, label: "Startups e empreendedorismo", description: "Noções de produto, validação de ideias, Pitch e como transformar um projeto em um pequeno negócio ou serviço." },
 ];
 
 function scrollTo(id: string) {
@@ -28,6 +28,7 @@ function scrollTo(id: string) {
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSubject, setActiveSubject] = useState<number | null>(null);
   return (
     <main className="site-shell">
       <div className="top-note"><span>Programando Futuros</span><span>aulas ao vivo • todo o Brasil • preço acessível</span></div>
@@ -70,7 +71,19 @@ export default function Home() {
 
       <section id="aulas" className="subjects-section section-pad">
         <div className="section-intro"><span className="section-kicker">o que você pode criar</span><h2>Mais do que código: ideias que ganham <span>forma.</span></h2><div className="margin-note">não é sobre decorar.<br /><strong>é sobre entender.</strong></div></div>
-        <div className="subject-list">{subjects.map(({ icon: Icon, label }, i) => <div className="subject-item" key={label}><span className="subject-number">0{i + 1}</span><Icon size={23} strokeWidth={1.8} /><strong>{label}</strong><ArrowUpRight size={16} className="subject-arrow" /></div>)}</div>
+        <div className="subject-list">
+          {subjects.map(({ icon: Icon, label, description }, i) => (
+            <div className={`subject-item ${activeSubject === i ? "is-open" : ""}`} key={label} role="button" tabIndex={0} onClick={() => setActiveSubject(activeSubject === i ? null : i)} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setActiveSubject(activeSubject === i ? null : i); }}>
+              <div className="subject-head">
+                <span className="subject-number">0{i + 1}</span>
+                <Icon size={23} strokeWidth={1.8} />
+                <strong>{label}</strong>
+                <ArrowUpRight size={16} className="subject-arrow" />
+              </div>
+              {activeSubject === i && <div className="subject-description">{description}</div>}
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="students-section section-pad"><div className="students-photo"><img src={`${IMAGE_BASE}/aula-online-criancas.png`} alt="Crianças felizes participando de uma aula online de programação com a professora e colegas na chamada de vídeo" /><span className="photo-caption">ideias compartilhadas<br /><strong>viram projetos</strong></span></div><div className="students-copy"><span className="section-kicker">aprender também pode ser leve</span><h2>Quando a curiosidade encontra a <span>tecnologia.</span></h2><p>Nas aulas ao vivo, crianças e adolescentes aprendem programação e IA aplicada criando juntos, testando ideias e desenvolvendo projetos que dão orgulho de mostrar.</p><div className="students-points"><span>criatividade</span><span>colaboração</span><span>autonomia</span></div></div></section>
